@@ -35,15 +35,18 @@ class User extends Authenticatable implements PasskeyUser
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, PasskeyAuthenticatable, TwoFactorAuthenticatable;
-
+    // Get the user's orders
     public function orders()
     {
         return $this->hasMany(Order::class);
     }
-    public function UserAddress()
+
+    // Get the user's addresses
+    public function userAddresses()
     {
         return $this->hasMany(UserAddress::class);
     }
+    
     /**
      * Get the attributes that should be cast.
      *

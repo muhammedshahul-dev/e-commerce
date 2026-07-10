@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Tag;
-//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TagSeeder extends Seeder
 {
@@ -14,6 +14,15 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         //
-        Tag::factory(10)->create();
+        $CoreCateory = ['Electronics', 'Clothing', 'Home & Kitchen', 'Books', 'Sports'];
+        //
+        foreach($CoreCateory as $Category){
+
+            Tag::firstOrCreate([
+
+                'name' => $Category,
+                'slug' => Str::slug($Category)
+            ]);
+        }
     }
 }

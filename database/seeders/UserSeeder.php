@@ -14,7 +14,13 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         //
-        User::factory()->firstOrCreate([
-        ]);
+
+        User::updateOrCreate(
+            ['email' => 'test@example.com'], // Checks if this email exists first
+            [
+                'name' => 'Test User',
+                'phone' => fake('en_IN')->mobileNumber(),
+            ]
+        );
     }
 }

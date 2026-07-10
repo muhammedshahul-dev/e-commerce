@@ -8,7 +8,8 @@ class Tag extends Model
 {
     //
     protected $fillable = [
-        'name'
+        'name',
+        'slug'
     ];
     public function products()
     {

@@ -47,6 +47,10 @@ class User extends Authenticatable implements PasskeyUser
         return $this->hasMany(UserAddress::class);
     }
     
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
     /**
      * Get the attributes that should be cast.
      *

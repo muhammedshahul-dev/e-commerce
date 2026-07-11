@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-//use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+
 
 class UserSeeder extends Seeder
 {
@@ -15,12 +15,23 @@ class UserSeeder extends Seeder
     {
         //
 
-        User::updateOrCreate(
-            ['email' => 'test@example.com'], // Checks if this email exists first
+        if(!User::where('email','admin@email.com')->exists() || !User::where('email','admin@email.com')->exists() ){
+            User::factory()->create(
+                [
+                    'name'=>'admin',
+                    'email'=>'admin@email.com',
+                    'role'=> 'admin'
+                ],
+            );
+        }
+        
+        if(!User::where('email','staff@email.com')->exists()){
             [
-                'name' => 'Test User',
-                'phone' => fake('en_IN')->mobileNumber(),
-            ]
-        );
+                'name'=>'staff',
+                'email'=>'staff@email.com',
+                'role'=> 'staff'
+            ];
+        }
+        User::factory()->count(10)->create();
     }
 }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->bigInteger('total_amount')->unsigned();
-            $table->enum('status', ['pending','processing' ,'shipped','delivered', 'cancelled'])->default('pending');
+            $table->enum('order_status', ['pending','processing' ,'shipped','delivered', 'cancelled'])->default('pending');
             $table->text('shipping_address');
             $table->text('instruction')->nullable();
             $table->string('payment_method');

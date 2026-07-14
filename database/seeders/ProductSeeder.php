@@ -15,12 +15,15 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         //
-        $tags=Tag::all();
+        $tags = Tag::all();
+        if ($tags->isEmpty()) {
+            throw new \RuntimeException('TagSeeder must run before ProductSeeder.');
+        }
 
         $products = Product::factory(10)->create();
 
-        foreach($products as $product){
-            $randomTag= $tags->random(rand(1,5))->pluck('id');
+        foreach ($products as $product) {
+            $randomTag = $tags->random(rand(1, min(5, $tags->count())))->pluck('id');
             $product->tags()->attach($randomTag);
         }
     }

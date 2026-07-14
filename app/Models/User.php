@@ -5,7 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Order;
 use App\Models\UserAddress;
-use Database\Factories\UserFactory;
+//use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -47,9 +47,9 @@ class User extends Authenticatable implements PasskeyUser
         return $this->hasMany(UserAddress::class);
     }
     
-    public function cart()
+    public function carts()
     {
-        return $this->belongsTo(Cart::class);
+        return $this->hasMany(Cart::class);
     }
     /**
      * Get the attributes that should be cast.

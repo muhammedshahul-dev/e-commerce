@@ -17,8 +17,5 @@ class Cart extends Model
     {
         return $this->belongsTo(Product::class);
     }
-    public function down(): void
-    {
-        Schema::dropIfExists('carts');
-    }
+    
 }

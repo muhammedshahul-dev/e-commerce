@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             UserAddressSeeder::class,
             ProductImageSeeder::class,
-            OrderSeeder::class
+            OrderSeeder::class,
+            OrderItemSeeder::class
         ]);
     }
 }

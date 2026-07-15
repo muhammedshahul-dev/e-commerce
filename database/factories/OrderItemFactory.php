@@ -17,18 +17,18 @@ class OrderItemFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {   
+    {
         return [
             //
-            'order_id'=> function(){
+            'order_id' => function () {
                 return \App\Models\Order::inRandomOrder()->first()?->id ?? \App\Models\Order::factory()->create()->id;
             },
-            'product_id'=>function(){
-                return \App\Models\Product::inRandomOrder()->first()?->id ?? \App\Models\Product::factory()->create()->id ;
+            'product_id' => function () {
+                return \App\Models\Product::inRandomOrder()->first()?->id ?? \App\Models\Product::factory()->create()->id;
             },
-            'quantity' => fake()->randomNumber(2,false),
-            'price_at_purchase' => function(array $attributes){
-                return Product::find($attributes['product_id'])->price ;
+            'quantity' => fake()->numberBetween(1, 99),
+            'price_at_purchase' => function (array $attributes) {
+                return Product::find($attributes['product_id'])->price;
             }
         ];
     }

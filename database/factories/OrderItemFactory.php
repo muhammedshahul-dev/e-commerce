@@ -28,7 +28,7 @@ class OrderItemFactory extends Factory
             },
             'quantity' => fake()->numberBetween(1, 99),
             'price_at_purchase' => function (array $attributes) {
-                return Product::find($attributes['product_id'])->price;
+                return Product::find(value($attributes['product_id']))->price;
             }
         ];
     }

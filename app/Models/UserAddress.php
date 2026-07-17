@@ -13,6 +13,7 @@ class UserAddress extends Model
         'country',
         'state',
         'city',
+        'district',
         'address_line1',
         'address_line2',
         'postal_code',

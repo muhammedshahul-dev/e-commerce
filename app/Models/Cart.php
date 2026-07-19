@@ -13,11 +13,11 @@ use Database\Factories\UserFactory;
         /** @use HasFactory<UserFactory> */
         use HasFactory;
         protected $fillable = ['user_id', 'product_id', 'quantity'];
-        public function user():BelongsTo
+        public function user(): BelongsTo
         {
             return $this->belongsTo(User::class);
         }
-        public function product():BelongsTo
+        public function product(): BelongsTo
         {
             return $this->belongsTo(Product::class);
         }

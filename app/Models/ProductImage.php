@@ -17,7 +17,7 @@ class ProductImage extends Model
         'product_id',
         'is_primary'
     ];
-    public function product():BelongsTo
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }

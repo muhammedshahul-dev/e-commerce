@@ -18,7 +18,7 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $name= ucwords(fake()->words(3,true));
+        $name= ucwords(implode('',fake()->words(3,true)));
         return [
             //
             'name'=>$name,

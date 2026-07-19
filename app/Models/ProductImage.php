@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Database\Factories\UserFactory;
+use Database\Factories\ProductImageFactory;
 
 class ProductImage extends Model
 {
     //
-    /** @use HasFactory<UserFactory> */
+    /** @use HasFactory<ProductImageFactory> */
     use HasFactory;
     protected $fillable = [
         'image_path',

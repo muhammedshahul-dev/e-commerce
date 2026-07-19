@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Database\Factories\UserFactory;
+use Database\Factories\OrderFactory;
 class Order extends Model
 {
     //
-    /** @use HasFactory<UserFactory> */
+    /** @use HasFactory<OrderFactory> */
     use HasFactory;
     protected $fillable = [
         'user_id',

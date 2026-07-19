@@ -26,15 +26,15 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class);
     }
-    public function primaryImage()
+    public function primaryImages()
     {
         return $this->hasOne(ProductImage::class)->where('is_primary', true);
     }
-    public function category()
+    public function categorys()
     {
         return $this->belongsTo(Category::class);
     }
-    public function cart(){
+    public function carts(){
         return $this->hasMany(Cart::class);
     }
 }

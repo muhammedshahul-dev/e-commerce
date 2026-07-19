@@ -26,7 +26,8 @@ class ProductFactory extends Factory
             'price' => fake()->randomFloat(2,0,100000),
             'stock' => fake()->numberBetween(0,100),
             'category_id'=> function(){
-                return \App\Models\Category::inRandomOrder()->first()?->id ?? \App\Models\Category::factory()->create()->id;
+                $category = \App\Models\Category::inRandomOrder()->first();
+                return $category ? $category->id :\App\Models\Category::factory()->create()->id;
             },
             'slug'=> Str::slug($name)
         ];

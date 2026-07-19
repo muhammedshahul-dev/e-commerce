@@ -20,7 +20,8 @@ class UserAddressFactory extends Factory
         return [
             //
             'user_id'=> function(){
-                return \App\Models\User::inRandomOrder()->first()?->id ?? \App\Models\User::factory()->create()->id;
+                $user = \App\Models\User::inRandomOrder()->first();
+                return $user ? $user->id :\App\Models\User::factory()->create()->id;
             },
             'country'=> 'india',
             'state'=> fake('en_IN')->state(),

@@ -21,7 +21,8 @@ class ProductImageFactory extends Factory
             //
             'image_path'=> 'https://picsum.photos/seed/' . fake()->uuid . '/600/400',
             'product_id'=> function(){
-                return \App\Models\Product::inRandomOrder()->first()?->id ?? \App\models\Product::factory()->create()->id;
+                $product = \App\Models\Product::inRandomOrder()->first();
+                return $product ? $product->id :\App\Models\Product::factory()->create()->id;
             }
         ];
     }

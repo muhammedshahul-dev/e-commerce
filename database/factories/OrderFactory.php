@@ -20,7 +20,8 @@ class OrderFactory extends Factory
         return [
             //
             'user_id' => function(){
-                return \App\Models\User::inRandomOrder()->first()?->id ?? \App\Models\User::factory()->create()->id;
+                $user = \App\Models\User::inRandomOrder()->first();
+                return $user ? $user->id :\App\Models\User::factory()->create()->id;
             },
             'total_amount'=>0,
             'order_status' => 'pending',

@@ -20,10 +20,12 @@ class CartFactory extends Factory
         return [
             //
             'user_id'=> function(){
-                return \App\Models\User::inRandomOrder()->first()?->id ?? \App\Models\User::factory()->create()->id;
+                $user = \App\Models\User::inRandomOrder()->first();
+                return $user ? $user->id :\App\Models\User::factory()->create()->id;
             },
             'product_id'=> function(){
-                return \App\Models\Product::inRandomOrder()->first()?->id ?? \App\Models\Product::factory()->create()->id;
+                $product = \App\Models\Product::inRandomOrder()->first();
+                return $product ? $product->id :\App\Models\Product::factory()->create()->id;
             },
             'quantity'=> fake()->numberBetween(1,100)
         ];

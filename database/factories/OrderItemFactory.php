@@ -21,10 +21,12 @@ class OrderItemFactory extends Factory
         return [
             //
             'order_id' => function () {
-                return \App\Models\Order::inRandomOrder()->first()?->id ?? \App\Models\Order::factory()->create()->id;
+                $order = \App\Models\Order::inRandomOrder()->first();
+                return $order ? $order->id :\App\Models\Order::factory()->create()->id;
             },
             'product_id' => function () {
-                return \App\Models\Product::inRandomOrder()->first()?->id ?? \App\Models\Product::factory()->create()->id;
+                $product = \App\Models\Product::inRandomOrder()->first();
+                return $product ? $product->id :\App\Models\Product::factory()->create()->id;
             },
             'quantity' => fake()->numberBetween(1, 99),
             'price_at_purchase' => function (array $attributes) {

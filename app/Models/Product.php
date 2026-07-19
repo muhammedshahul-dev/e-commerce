@@ -35,7 +35,7 @@ class Product extends Model
     {
         return $this->hasOne(ProductImage::class)->where('is_primary', true);
     }
-    public function categorys(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

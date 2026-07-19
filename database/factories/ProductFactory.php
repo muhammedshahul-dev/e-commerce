@@ -17,8 +17,8 @@ class ProductFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        $name= ucwords(implode('',fake()->words(3,true)));
+    {   //its 3 word name like first name second name not array
+        $name= ucwords(fake()->words(3,true));
         return [
             //
             'name'=>$name,

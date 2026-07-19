@@ -25,7 +25,7 @@ class OrderFactory extends Factory
             },
             'total_amount'=>0,
             'order_status' => 'pending',
-            'shipping_address'=> fake('en_IN')->streetAddress(),
+            'shipping_address'=> fake('en_IN')->streetAddress,
             'instruction'=> fake()->paragraph(3),
             'payment_method'=> fake()->randomElement(['cod','credit_card','upi','debit_card']),
             'payment_status'=> fake()->randomElement(['paid','pending','failed'])

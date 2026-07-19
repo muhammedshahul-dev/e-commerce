@@ -24,11 +24,11 @@ class UserAddressFactory extends Factory
                 return $user ? $user->id :\App\Models\User::factory()->create()->id;
             },
             'country'=> 'india',
-            'state'=> fake('en_IN')->state(),
-            'district'=>fake('en_IN')->city(),
-            'city'=> fake('en_IN')->locality(),
-            'address_line1'=> fake('en_IN')->streetAddress(),
-            'postal_code'=> fake('en_IN')->postcode()
+            'state'=> fake('en_IN')->state,
+            'district'=>fake('en_IN')->city,
+            'city'=> fake('en_IN')->locality,
+            'address_line1'=> fake('en_IN')->streetAddress,
+            'postal_code'=> fake('en_IN')->postcode
         ];
     }
 }

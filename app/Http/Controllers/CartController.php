@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class CartController extends Controller
 {
@@ -13,6 +16,8 @@ class CartController extends Controller
     public function index()
     {
         //
+        $cartItems=Auth::user()->carts;
+        return Inertia::render('Cart/index',['cartItems'=>$cartItems]);
     }
 
     /**
@@ -21,6 +26,7 @@ class CartController extends Controller
     public function create()
     {
         //
+        abort(404);
     }
 
     /**
@@ -29,6 +35,17 @@ class CartController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'product_id'=> 'required|exists:product,id',
+            'quantity'=>'required|min:1|integer'
+        ]);
+        /** @var \App\Models\User $user */
+        $user= Auth::user();
+        $user->carts()->create([
+            'product_id'=>$request->product_id,
+            'quantity'=> $request->quantity
+        ]);
+        return redirect()->back();
     }
 
     /**
@@ -37,6 +54,7 @@ class CartController extends Controller
     public function show(Cart $cart)
     {
         //
+        abort(404);
     }
 
     /**
@@ -45,6 +63,7 @@ class CartController extends Controller
     public function edit(Cart $cart)
     {
         //
+        abort(404);
     }
 
     /**
@@ -53,6 +72,16 @@ class CartController extends Controller
     public function update(Request $request, Cart $cart)
     {
         //
+        $request->validate([
+            'quantity'=>'required|integer|min:1'
+        ]);
+        if($cart->user_id !== Auth::id()){
+            abort(403);
+        }
+        $cart->update([
+            'quantity'=>$request->quantity,
+        ]);
+        return redirect()->back()->with('success', 'Item updated from cart successfully!');
     }
 
     /**
@@ -61,5 +90,10 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+        if($cart->user_id !== Auth::id()){
+            abort(403);
+        }
+        $cart->delete();
+        return redirect()->back()->with('success', 'Item removed from cart successfully!');
     }
 }

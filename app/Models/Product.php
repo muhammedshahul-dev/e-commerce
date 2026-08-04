@@ -23,6 +23,10 @@ class Product extends Model
         'category_id',
         'slug'
     ];
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class,'product_tag');

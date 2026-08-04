@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
             throw new \RuntimeException('TagSeeder must run before ProductSeeder.');
         }
 
-        $products = Product::factory(10)->create();
+        $products = Product::factory(100)->create();
 
         foreach ($products as $product) {
             $randomTag = $tags->random(rand(1, min(5, $tags->count())))->pluck('id');
